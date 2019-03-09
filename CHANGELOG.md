@@ -7,12 +7,22 @@ provide a short summary description of the particular changes of the patch.
 Include the issue number (#xxx) which will link back to the originating issue
 in github. Commentary on the change should appear as a nested, unordered list.
 
-## 1.0.11 (WIP)
+## Unreleased
 - Improvements
-  - Add the --custom-report option to build your own formatter
-  - Add support for test selectors (see #54 and #230)
+  - Add `--exclude-call` option to exclude call sites by fn/macro name (#241)
+
+## 1.1.0
+- New release pipeline, no other changes.
+
+## 1.0.12
+- Improvements
+  - Add --custom-report option to build your own formatter (#226)
+  - Add support for test selectors (#54, #230)
 - Bugfixes
   - Fix the handling of --ns-regex and --test-ns-regex (#183)
+
+## 1.0.11
+- Bugfixes
   - Read options from the Leiningen project file (#155)
   - Fix instrumentation of reify forms (#185)
 

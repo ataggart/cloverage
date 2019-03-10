@@ -36,5 +36,6 @@ jdk:
   - openjdk7
   - openjdk8
 
-after_success:
-  - bash deploy.sh
+# Commented out while investigating using CircleCI for releases.
+# after_success:
+#   - bash deploy.sh

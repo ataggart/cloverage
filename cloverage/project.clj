@@ -14,7 +14,8 @@
           :comments "same as Clojure"}
   :deploy-repositories {"releases"
                         {:url "https://repo.clojars.org"
-                         :creds :gpg}}
+                        :username :env/clojars_username
+                        :password :env/clojars_password}}
   :dependencies [[org.clojure/tools.reader "1.1.2"]
                     [org.clojure/tools.cli "0.3.5"]
                     [org.clojure/tools.logging "0.4.0"]

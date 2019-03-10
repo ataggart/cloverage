@@ -12,7 +12,8 @@
             :comments "same as Clojure"}
   :deploy-repositories {"releases"
                         {:url "https://repo.clojars.org"
-                         :creds :gpg}}
+                        :username :env/clojars_username
+                        :password :env/clojars_password}}
   :lein-release {:scm :git ; Because we're not in the top-level directory, so it doesn't auto-detect
                  :deploy-via :clojars}
   :min-lein-version "2.0.0"

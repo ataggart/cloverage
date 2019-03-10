@@ -26,6 +26,10 @@ jobs:
           paths:
             - ~/.m2
 
+      - run:
+          name: test cloverage and lein-cloverage have the same version
+          command: ./check-versions.sh
+
       ################################################################################
       # cloverage tests
 
@@ -78,3 +82,34 @@ jobs:
           name: (lein-cloverage) kibit
           command: lein kibit
           working_directory: ./lein-cloverage
+
+  release:
+    docker:
+      - image: clojure:lein-2.8.1
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-jars-{{ checksum "cloverage/project.clj" }}-{{ checksum "lein-cloverage/project.clj" }}
+            - v1-jars-
+      - deploy:
+          name: release cloverage
+          command: echo 'lein release :patch'
+          working_directory: cloverage
+      - deploy:
+          name: release lein-cloverage
+          command: echo 'lein release :patch'
+          working_directory: lein-cloverage
+
+
+workflows:
+  version: 2
+  primary:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build
+          filters:
+            tags:
+              only: latest
